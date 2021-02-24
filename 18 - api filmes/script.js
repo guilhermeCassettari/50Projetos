@@ -20,10 +20,9 @@ form.addEventListener('submit', (e) => {
 })
 
 async function getMovies(url) {
+
     const res = await fetch(url)
     const data = await res.json()
-    console.log(data.results)
-    console.log(data.results.poster_path)
     showMovies(data.results)
 }
 
@@ -36,8 +35,7 @@ function showMovies(movies) {
         const movieElement = document.createElement('div')
         movieElement.classList.add('movie')
 
-        movieElement.innerHTML = `
-            
+        movieElement.innerHTML = `            
                 <img src="${IMG_PATH + poster_path}" alt="${title}" />
                 <div class="movie-info">
                     <h3>${title}</h3>
@@ -47,12 +45,9 @@ function showMovies(movies) {
                 <div class="overview">
                     <h3>Overview</h3>
                    ${overview}
-
                 </div>
-            
+                `
 
-
-        `
         main.appendChild(movieElement)
     })
 }
